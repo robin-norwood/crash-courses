@@ -39,23 +39,25 @@ Developer, product manager, engineering manager for ~15 years at Rackspace and R
 Everybody has an internet connection and a browser open, right?
 ...right?
 
-Baby Steps: https://codeanywhere.com
+Baby Steps
 
 What is this?
 
 A python “shell” - we enter python code, and trinket interprets it and shows the results right away
 Type along with me!
 
-Glorified calculator
+## Glorified calculator
 Addition, subtraction, multiplication, division, exponents
-Kinds of data
+
+## Kinds of data
 Numbers
 Integers
 Floats
 Letters
 Strings & characters
 Add strings together
-Variables
+
+## Variables
 Assignment:
 my_number = 5
 my_name = “Robin”
@@ -70,8 +72,10 @@ my_number = 12
 Variables in python are just names for data
 Any valid name can “point to” any kind of data
 “Dynamically typed”
-More kinds of data
-Lists
+
+## More kinds of data
+
+### Lists
 Lists
 List of numbers
 Index of list
@@ -80,18 +84,22 @@ Mixed list
 Set value of items in a list
 Length of list: len()
 Get a sub list
-Tuples
+
+### Tuples
 Seven dwarfs
 Can’t set values of a tuple!
 This is called “Immutable”
-Sets
+
+### Sets
 Un-ordered lists
 Union, difference, intersection...
-Dictionaries
+
+### Dictionaries
 Sort of like a “look up table”
 Ages = {‘Collin’: 16, …}
 ages[‘Collin’] += 1
-Booleans
+
+### Booleans
 True, False
 Equality, inequality, >, <
 ‘in’
@@ -101,12 +109,14 @@ If 12 < 3: print “Numbers are numbers!”
 If “Grouchy” in dwarves:
 None
 Different from 0, or ‘’, or False - basically the same as “has no value”
-A little more about variables
+
+## A little more about variables
 A single piece of data can have more than one name
 But just because two pieces of data have the same value, doesn’t make them the same data!
 Is vs ==
 type()
-Functions
+
+## Functions
 Functions do stuff with data
 Function/machine analogy
 Draw a picture of a function:
@@ -125,7 +135,8 @@ int()
 float()
 round(float)
 str()
-Make your own functions
+
+### Make your own functions
 greet()
 area_of_circle() - import math; math.pi
 round()
@@ -133,13 +144,16 @@ dwarf_of_the_day()
 Import random
 dwarves = (“Doc”, “Grumpy”, “Happy”, “Sleepy”, “Bashful”, “Sneezy”, “Dopey”)
 random.choice(dwarves)
-Why functions are great:
+
+### Why functions are great:
 Developers are lazy - we don’t like to repeat ourselves!
 No one can do it all. Not using any functions would be like cooking a meal “from scratch” - raising the chickens, growing the wheat, etc
 By doing the same thing the same way, we reduce errors - get a specific task right one time, never again - greek upper() example
 Optimization - by writing a reusable function, we can spend a lot of time making that function as fast and efficient as possible, where a naive approach might not be so fast.
 Encapsulation - don’t have to be an expert in everything, or know about all the details
-Loops
+
+
+## Loops
 For ___ in ___
 For dwarf in dwarfs:
 While ___
