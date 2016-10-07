@@ -226,4 +226,3 @@ If you like videos:
 Codeschool.com seems ok - lots of others
 If you like a 12 week intensive course:
 The Iron Yard!
-
