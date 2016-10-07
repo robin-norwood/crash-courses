@@ -253,4 +253,3 @@ Remote repositories (usually called “remotes”) are just like the one on your
 
 
 ## Git log <branch>..<other> or branch ^other
-
