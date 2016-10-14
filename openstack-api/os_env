@@ -1,0 +1,9 @@
+export OS_IMAGE_API_VERSION=2
+#export OS_PROJECT_NAME=admin
+export OS_AUTH_TYPE=password
+export OS_PASSWORD=devstack
+export OS_AUTH_URL=http://107.170.32.126:5000/v3
+export OS_USERNAME=admin
+export OS_TENANT_NAME=admin
+export OS_VOLUME_API_VERSION=2
+export OS_IDENTITY_API_VERSION=3

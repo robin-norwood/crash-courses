@@ -1,0 +1,8 @@
+clouds:
+  robin:
+    region_name: RegionOne
+    auth:
+      username: 'admin'
+      password: 'devstack'
+      project_name: 'admin'
+      auth_url: 'http://162.243.46.13:5000/v2.0'
