@@ -1,0 +1,23 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+ipython = "*"
+"devp2p" = {git = "https://github.com/ethereum/pydevp2p.git", ref = "develop"}
+ethereum = {git = "https://github.com/ethereum/pyethereum", ref = "develop"}
+pyethapp = {git = "https://github.com/ethereum/pyethapp", ref = "develop"}
+viper = {git = "https://github.com/ethereum/vyper", ref = "master"}
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "3.6"
