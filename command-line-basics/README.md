@@ -139,11 +139,12 @@ Another interesting fact about `mv` - not only can it *move* files from one dire
 
 Maybe we've decided that this "Text files" directory is a bad idea. Move the files back out of "Text files", into the "practice" directory:
 
+```
     $ mv *.txt ..
     $ cd ..
     $ ls
     Text files	    adios.txt	    hello.txt
-
+```
 Two new concepts here: First, the `*` (*star* or *glob*) symbol essentially matches any number of letters. You can think of `*.txt` as meaning "everything that ends in `.txt`".
 
 Second, the `..` symbol means "The directory that contains the current one" - sometimes we say "the directory above this one". So in english, the command was "move every file that ends in .txt to the directory above this one".
@@ -152,12 +153,14 @@ So, now the `practice` directory has our text files in it, as well as the `Text 
 
 WARNING: `rm` is a dangerous command. You can easily remove the wrong files, with little chance of recovery. Use it with extreme caution.
 
+```
     $ rm -r "Text files"/
     $ ls
     adios.txt	    hello.txt
     $ rm *.txt
+```
 
-No we've removed the text files we created as well. Note that the command line doesn't have a "Trash"; those files are gone permanently, with no easy way to get them back. The command line doesn't mess around.
+Now we've removed the text files we created as well. Note that the command line doesn't have a "Trash"; those files are gone permanently, with no easy way to get them back. The command line doesn't mess around.
 
 
 ## Summary of common commands and symbols
@@ -211,6 +214,7 @@ Using `cat` this way concatenates the file to our terminal window (technically t
 
 Cat is pretty useful to quickly see what's in a file, but since it will concatenate the *entire* file, you'll often get more than you bargained for. `head` (*heading*) will instead concatenate just the first lines of a file, and `tail` does the same thing at, well, the other end:
 
+```
     $ head -n 5 /usr/share/dict/words
     A
     a
@@ -224,11 +228,14 @@ Cat is pretty useful to quickly see what's in a file, but since it will concaten
     Zyzomys
     Zyzzogeton
     $
+```
 
 Tail is most often used with the `-f` argument, which will *follow* the file as more lines are added to it:
 
+```
     $ tail -f /var/log/wifi.log
     <several cryptic lines of text>
+```
 
 At this point, try turning your wifi connection on and off; you should see more lines of text appear in the Terminal window. Hit `Control-C` in the terminal window to cancel the `tail` command.
 
@@ -236,6 +243,7 @@ At this point, try turning your wifi connection on and off; you should see more 
 
 Sometimes it is useful to have more than one name for a single file or directory. We use the `ln` (*link*) command to do this. There are two kinds of links: "hard links" and "symlinks". Symlinks will be the better choice almost all of the time, and we use the `-s` option to tell `ln` we want a symlink instead of a hard link, so you'll almost always use `ln -s` together. Just like `cp`, the first argument is the "source", and the second argument is the "destination":
 
+```
     $ ln -s poem-1_0.txt poem.txt
     $ ls
     poem-1_0.txt	poem.txt
@@ -249,48 +257,60 @@ Sometimes it is useful to have more than one name for a single file or directory
     the second stanza
     is worse than the first.
     $
+```
 
 If we remove the original file, we'll have what's known as a *broken link*. The command line will still let us do that, though:
 
+```
     $ rm poem-1_0.txt
     $ cat poem.txt
     cat: poem.txt: No such file or directory
+```
 
 This can be a confusing sort of error to diagnose; `ls -l` can be handy, as it shows the symlink and the file that it is meant to link to:
 
+```
     $ ls -l
     total 8
     lrwxr-xr-x  1 rnorwood  staff  12 Mar 29 11:39 poem.txt -> poem-1_0.txt
+```
 
 The very first letter (`l`) on the line tells us that the file is a `link`, and the last part of the line tells us that `poem.txt` is meant to link to `poem-1_0.txt`. It doesn't tell us that poem-1_0.txt no longer exists, but we can tell that it doesn't, otherwise it would be listed here.
 
 You can remove links just like any other file:
 
+```
     $ rm poem.txt
+```
 
 You can also link files outside of your current directory:
 
+```
     $ ln -s /usr/share/dict/words words
     $ cat words
     [many lines of output]
     zythum
     Zyzomys
     Zyzzogeton
-
+```
 
 ## Open
 
 MacOS provides a nice command line program called `open`, which will *open* a file with whatever the default application is to open that type of file.
 
+```
     $ open ~/Documents/practice/words
     <A window opens - probably TextEdit>
+```
 
 ## Getting help
 
 We've just touched on a few of the basics of the command line. There are lots of ways to get help, starting with `man`, which is the command that shows the *manual* for another command:
 
+```
     $ man cp
     <screen will fill with text - use arrows to scroll, press 'Q' to quit>
+```
 
 man pages are generally exhaustive help on a given command. They can be a valuable reference, but are more focused on what you can do with the command, not how you can get a specific task done. Often a better way is to search Google for "How to ______ with the command line".
 
@@ -312,11 +332,13 @@ In a UNIX system, there are three kinds of user account:
 
 You've probably noticed that often when you need to do something that affects the whole system, like install new software, you need to re-enter your password. Behind the scenes, Mac OS is configured to allow your user to have permission to do things like this, but you have to enter your password first. There's an equivalent for the command line called "sudo" (*super user do*). Open a terminal and run:
 
+```
     $ ls /var/root/
     ls: : Permission denied
     $ sudo ls /var/root/
     Password: <enter your password>
     .CFUserTextEncoding	    .forward		Library
+```
 
 This is a harmless example, but be very cautious running commands with sudo. A common "trick" that some people will play on people new to UNIX is to get them to run (NOTE: DO NOT RUN THIS COMMAND) `sudo rm -rf /` - this will proceed to delete every file on your system, rendering it unusable.
 
@@ -324,22 +346,26 @@ This is a harmless example, but be very cautious running commands with sudo. A c
 
 The `dscl` command accesses Mac OS's user database:
 
+```
     $ dscl . -list /Users
     [long list of user names, including yours]
+```
 
 ## Groups and ids
 
 A similar concept to users is groups. A UNIX group has users in it, and some of the permissions from the group are "inherited" by the users in the group.
 
 Each user and group has both a name, and an *id*. You can list your user information with the `id` command:
-
+```
     $ id
     uid=501(rnorwood) gid=20(staff) groups=20(staff),701(com.apple.sharepoint.group.1),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),33(_appstore),100(_lpoperator),204(_developer),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh)
+```
 
 ## Permissions to files and directories
 
 Remember the `ls -l` command? It tells us both who owns a file or directory, as well as what permissions are set for them:
 
+```
     $ ls -l ~
     total 0
     drwxr-xr-x   7 rnorwood  staff   238 Mar 29 23:23 Applications
@@ -353,6 +379,7 @@ Remember the `ls -l` command? It tells us both who owns a file or directory, as 
     drwxr-xr-x+  5 rnorwood  staff   170 Mar 14 11:55 Public
     drwxr-xr-x   3 rnorwood  staff   102 Mar 16 13:48 git
     -rw-r--r--   1 rnorwood  staff     0 Mar 31 10:50 test.txt
+```
 
 Starting with `rnorwood` and `staff`, this tells me that the user `rnorwood` and the group `staff` "own" each file and directory in my home directory.
 
@@ -378,9 +405,11 @@ So, according to the `ls` command above:
 
 The `chmod` (*change mode*) command can change permissions on files (among other things).
 
+```
     $ chmod g+w test.txt
     $ ls -l test.txt
     -rw-rw-r--  1 rnorwood  staff  0 Mar 31 10:50 test.txt
+```
 
 As you can see, now anyone in the `staff` group can write to test.txt. The first argument for chmod works like this:
 
@@ -388,6 +417,7 @@ As you can see, now anyone in the `staff` group can write to test.txt. The first
 - The second character is `+` to add permission, or `-` to remove permission.
 - The third character is `r` for "read", `w` for "write", and `x` for execute.
 
+```
     $ cat > poem.txt
     I want this poem to
     last forever.
@@ -400,10 +430,13 @@ As you can see, now anyone in the `staff` group can write to test.txt. The first
     --w-------  1 rnorwood  staff  6 Mar 31 11:10 poem.txt
     $ cat poem.txt
     cat: poem.txt: Permission denied
+```
 
 Oops. Now not even I can read the file! I can remove it, though (because `w` is set for my user):
 
+```
     $ rm poem.txt
+```
 
 Good riddance to bad poetry!
 
